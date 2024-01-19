@@ -1,0 +1,95 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+    Download
+{% endblock %}
+
+{% block body %}
+    <!-- ======= About Section ======= -->
+    <div id="about" class="paddsection">
+      <div class="container">
+      <div class="row justify-content-between">
+
+          <div class="col-lg-4 ">
+          <div class="div-img-bg">
+              <div class="about-img">
+              <img src="{{book.image.url}}" class="img-responsive" alt="me">
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-7">
+          <div class="about-descr">
+
+              <p class="p-heading">{{book.title}}  by : {{book.author}} </p>
+              <p class="separator">{{book.about}}</p>
+
+          </div>
+          <p>
+              <form action="/download-book/{{book.title}}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-defeault btn-send" value="Add Book to our Library"> Download Book </button>
+              </form>
+              </p>
+          </div>
+          <div>
+            <div class="comments text-left padDiv mb-30">
+              <div class="entry-comments">
+                <h6 class="mb-30">Reviews</h6>
+                <ul class="entry-comments-list list-unstyled">
+                  {% for review in reviews %}
+                  <li>
+                    <div class="entry-comments-item">
+                      <img src="{% static 'assets/img/user-icon.png'%}" class="entry-comments-avatar" alt="">
+                      <div class="entry-comments-body">
+                        <span class="entry-comments-author">{{review.name}}</span>
+                        <span><a href="#">{{ review.date }}</a></span>
+                        <p class="mb-10">{{review.comment}} </p>
+                        {% comment %} <a class="rep" href="#">Reply</a>  {% endcomment %}
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                  {% comment %} <li>
+                    <div class="entry-comments-item">
+                      <img src="assets/img/avatar.jpg" class="entry-comments-avatar" alt="">
+                      <div class="entry-comments-body">
+                        <span class="entry-comments-author">Andrew Lupkin</span>
+                        <span><a href="#">fev 14, 2018 at 12:55 pm</a></span>
+                        <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam justo, ullamcorper tincidunt pellentesque in, condimentum ut enim. Aenean at pharetra diam, quis vulputate urna. </p>
+                        <a class="rep" href="#">Reply</a>
+                      </div>
+                    </div>
+                  </li> {% endcomment %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="cmt padDiv">
+              <form id="comment-form" method="post" action="/get-book/{{book.title}}" role="form">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input id="form_name" type="text" name="name" class="form-control" placeholder="Your Name">
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <textarea id="form_message" name="review" class="form-control" placeholder="Your Review *" style="height: 200px;" required="required"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-defeault btn-send" value="Add Review">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+      </div>
+
+  
+  </div><!-- End About Section -->
+{% endblock %}

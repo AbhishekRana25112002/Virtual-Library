@@ -1,0 +1,300 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+    Virtual Library
+{% endblock %}
+
+{% block body %}
+
+<!-- ======= Hero Section ======= -->
+<div id="hero" class="home">
+
+  <div class="container">
+    <div class="hero-content">
+      <h1>Welcome back {{username}}</h1>
+      <p>New Books and Blogs are waiting for you.</p>
+
+      <ul class="list-unstyled list-social">
+        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+        <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+        <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div><!-- End Hero -->
+
+<main id="main">
+
+  <!-- ======= About Section ======= -->
+  <div id="about" class="paddsection">
+    <div class="container">
+      <div class="row justify-content-between">
+
+        <div class="col-lg-4 ">
+          <div class="div-img-bg">
+            <div class="about-img">
+              <img src="{% static 'assets/img/5.jpg'%}" class="img-responsive" alt="me">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-descr">
+
+            <p class="p-heading">The joy of reading is no mystery to anyone. We have not just created a website but a revolution.</p>
+            <p class="separator">Lets you and we make this world a more informational and educated place by creating the biggest virtual library in the history of mankind.</p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- End About Section -->
+
+
+  <!-- ======= Portfolio Section ======= -->
+  <div id="portfolio" class="paddsection">
+
+    <div class="container">
+      <div class="section-title text-center">
+        <h2> Popular Books </h2>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-fiction">Fiction</li>
+            <li data-filter=".filter-nonfiction">Non Fiction</li>
+            <li data-filter=".filter-romance">Romance</li>
+            <li data-filter=".filter-mystery">Mystery</li>
+            <li data-filter=".filter-selfhelp">Self Help</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+        {% for book in books %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-{{book.category}}">
+          <a href="/get-book/{{book.title}}">
+            <img src="{{book.image.url}}" class="img-fluid" alt="" style="height:300px; width:500px;">
+          </a>
+          <div class="portfolio-info">
+            <h4>{{book.title}}</h4>
+            <p>by: {{book.author}}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% comment %} <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="{% static 'assets/img/portfolio/portfolio-2.jpg'%}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 3</h4>
+            <p>Web</p>
+            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 2</h4>
+            <p>App</p>
+            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 2</h4>
+            <p>Card</p>
+            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 2</h4>
+            <p>Web</p>
+            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 3</h4>
+            <p>App</p>
+            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div> {% endcomment %}
+
+      </div>
+
+    </div>
+
+  </div><!-- End Portfolio Section -->
+
+
+  <!-- ======= About Section ======= -->
+  <div id="about" class="paddsection">
+    <div class="container">
+      <div class="row justify-content-between">
+
+        <div class="col-lg-4 ">
+          <div class="div-img-bg">
+            <div class="about-img">
+              <img src="{% static 'assets/img/blog.png'%}" class="img-responsive" alt="me">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-descr">
+
+            <p class="p-heading">Our platform not just gives you access to the popular books but also the views, opinions and thoughts of the common people</p>
+            <p class="separator">Read Blogs, Write blogs and Share blogs on virtually any topic under the Sun</p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- End About Section -->
+
+  <!-- ======= Journal Section ======= -->
+  <div id="journal" class="text-left paddsection">
+
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Recent Posts</h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="journal-block">
+        <div class="row">
+        {% for post in posts %}
+          <div class="col-lg-4 col-md-6">
+            <div class="journal-info">
+
+              <a href="/post/{{post.id}}"><img src="{{ post.image.url }}" class="img-responsive" alt="img"></a>
+
+              <div class="journal-txt">
+
+                <h4><a href="blog-single.html">{{post.title}}</a></h4>
+                <p class="separator">{{post.subtitle}}
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+        {% endfor %}
+          {% comment %} <div class="col-lg-4 col-md-6">
+            <div class="journal-info">
+
+              <a href="blog-single.html"><img src="{% static 'assets/img/blog-post-2.jpg'%}" class="img-responsive" alt="img"></a>
+
+              <div class="journal-txt">
+
+                <h4><a href="blog-single.html">WE'RE GONA MAKE DREAMS COMES</a></h4>
+                <p class="separator">To an English person, it will seem like simplified English
+                </p>
+
+              </div>
+
+            </div>
+          </div> {% endcomment %}
+
+          {% comment %} <div class="col-lg-4 col-md-6">
+            <div class="journal-info">
+
+              <a href="blog-single.html"><img src="{% static 'assets/img/blog-post-3.jpg'%}" class="img-responsive" alt="img"></a>
+
+              <div class="journal-txt">
+
+                <h4><a href="blog-single.html">NEW LIFE CIVILIZATIONS TO BOLDLY</a></h4>
+                <p class="separator">To an English person, it will seem like simplified English
+                </p>
+
+              </div>
+
+            </div>
+          </div> {% endcomment %}
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- End Journal Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <div id="contact" class="paddsection">
+    <div class="container">
+      <div class="contact-block1">
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="contact-contact">
+
+              <h2 class="mb-30">GET IN TOUCH</h2>
+
+              <ul class="contact-details">
+                <li><span>We are located at</span></li>
+                <li><span>Tower 3,Sector 32, IT Park, Dehradun</span></li>
+                <li><span>+91 1912704287</span></li>
+                <li><span>virtuallib@gmail.com</span></li>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="/contact" method="post" role="form" class="">
+              {% csrf_token %}
+              <div class="row gy-3">
+
+                <div class="col-lg-6">
+                  <div class="form-group contact-block1">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                  </div>
+                </div>
+
+                <div class="mt-0">
+                  <input type="submit" class="btn btn-defeault btn-send" value="Send message">
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+{% endblock %}

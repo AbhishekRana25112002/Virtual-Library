@@ -1,0 +1,32 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+    Thank You
+{% endblock %}
+
+{% block body %}
+    <!-- ======= About Section ======= -->
+    <div id="about" class="paddsection">
+        <div class="container">
+        <div class="row justify-content-between">
+  
+            <div class="col-lg-4 ">
+            <div class="div-img-bg">
+                <div class="about-img">
+                <img src="{% static 'assets/img/blog-post-2.jpg' %}" class="img-responsive" alt="me">
+                </div>
+            </div>
+            </div>
+  
+            <div class="col-lg-7">
+            <div class="about-descr">
+  
+                <p class="p-heading">  Thank you {{username}} </p>
+                <p class="separator"> You will be contacted soon </p>
+  
+            </div>
+            </div>
+        </div>
+        </div>
+    </div><!-- End About Section -->
+{% endblock %}

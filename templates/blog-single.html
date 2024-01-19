@@ -1,0 +1,98 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block body %}
+<main id="main">
+
+  <!-- ======= Blog Single ======= -->
+  <div class="main-content paddsection">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+            <div class="container-main single-main">
+              <div class="col-md-12">
+                <div class="block-main mb-30">
+                  <img src="{{post.image.url}}" class="img-responsive" alt="reviews2" style="height: 600px; width: 100%">
+                  <div class="content-main single-post padDiv">
+                    <div class="journal-txt">
+                      <h4><a href="#">{{post.title}}</a></h4>
+                    </div>
+                    <div class="post-meta">
+                      <ul class="list-unstyled mb-0">
+                        <li class="author">by:<a href="#">{{post.user}}</a></li>
+                        <li class="date">date:<a href="#">{{post.created_at}}</a></li>
+                        {% comment %} <li class="commont"><i class="ion-ios-heart-outline"></i><a href="#">3 Comments</a></li> {% endcomment %}
+                      </ul>
+                    </div>
+                      <p>{{post.content}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="comments text-left padDiv mb-30">
+                  <div class="entry-comments">
+                    <h6 class="mb-30">comments</h6>
+                    <ul class="entry-comments-list list-unstyled">
+                      {% for comment in comments %}
+                      <li>
+                        <div class="entry-comments-item">
+                          <img src="{% static 'assets/img/user-icon.png'%}" class="entry-comments-avatar" alt="">
+                          <div class="entry-comments-body">
+                            <span class="entry-comments-author">{{comment.name}}</span>
+                            <span><a href="#">{{comment.date}} </a></span>
+                            <p class="mb-10">{{comment.comment}} </p>
+                            {% comment %} <a class="rep" href="#">Reply</a> {% endcomment %}
+                          </div>
+                        </div>
+                      </li>
+                      {% endfor %}
+                      {% comment %} <li>
+                        <div class="entry-comments-item">
+                          <img src="assets/img/avatar.jpg" class="entry-comments-avatar" alt="">
+                          <div class="entry-comments-body">
+                            <span class="entry-comments-author">Andrew Lupkin</span>
+                            <span><a href="#">fev 14, 2018 at 12:55 pm</a></span>
+                            <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam justo, ullamcorper tincidunt pellentesque in, condimentum ut enim. Aenean at pharetra diam, quis vulputate urna. </p>
+                            <a class="rep" href="#">Reply</a>
+                          </div>
+                        </div>
+                      </li> {% endcomment %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="cmt padDiv">
+                  <form id="comment-form" method="post" action="/post/{{post.id}}" role="form">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input id="form_name" type="text" name="name" class="form-control" placeholder="Your Name">
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <textarea id="form_message" name="comment" class="form-control" placeholder="Comment *" style="height: 200px;" required="required"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <input type="submit" class="btn btn-defeault btn-send" value="Add comment">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Single -->
+
+</main><!-- End #main -->
+{% endblock %}
